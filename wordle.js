@@ -77,9 +77,15 @@ function update() {
     for (let c = 0; c < width; c++) {
         let currTile = document.getElementById(row.toString() + '-' + c.toString());
         let letter = currTile.innerText;
+        guess += letter;
     }
 
-   
+    guess = guess.toLowerCase();
+    if (!guessList.includes(guess)) {
+    document.getElementById("answer").innerText = "Not in the word list";
+    return;
+
+    }
     
     //start processing guess
     let correct = 0;
@@ -134,4 +140,6 @@ function update() {
             }
         }
     }
+    row += 1; //start new row
+     col = 0; //start at 0 for new row
 }
